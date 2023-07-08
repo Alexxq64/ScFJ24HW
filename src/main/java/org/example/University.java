@@ -83,11 +83,16 @@ public class University {
     }
 
     @Override
+//    public String toString() {
+//        return  id + ".   " + fullName + " " +
+//                " (" + shortName + ") " +
+//                " " + yearOfFoundation + ". " +
+//                country + ", " + city +
+//                ".   Profile: " + mainProfile.getProfileName();
+//    }
+
     public String toString() {
-        return  id + ".   " + fullName + " " +
-                " (" + shortName + ") " +
-                " " + yearOfFoundation + ". " +
-                country + ", " + city +
-                ".   Profile: " + mainProfile.getProfileName();
+        return String.format("%-5s%-40s - %-10s  %-4d. %15s, %-15s Profile: %s", id, fullName, shortName, yearOfFoundation, country, city, mainProfile.getProfileName());
     }
+
 }
