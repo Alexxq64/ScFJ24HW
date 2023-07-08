@@ -23,6 +23,8 @@ public class Main {
                 "Caltech", 1891, StudyProfile.ENGINEERING, "United States", "Los Angeles"));
         universities.add(new University("5", "Московский государственный университет",
                 "МГУ", 1755, StudyProfile.SCIENCES, "Russia", "Moscow"));
+        universities.add(new University("99", "SkillFactory",
+                "SkF", 2016, StudyProfile.CODING, "Russia", "Moscow"));
 
 
         students.add(new Student("Alice Johnson", "1", 3,
@@ -35,6 +37,8 @@ public class Main {
                 95.2f, parseDate("05.07.2002"), 2017));
         students.add(new Student("Ольга Портнова", "5", 3,
                 88.7f, parseDate("28.11.2001"), 2018));
+        students.add(new Student("Алексей Кузнецов", "99", 1,
+                99f, parseDate("29.06.1964"), 2022));
 
         System.out.println("Университеты:");
         for (University university : universities) {
