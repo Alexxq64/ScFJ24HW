@@ -9,12 +9,13 @@ import org.example.enums.UniversityField;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static List<University> universities = new ArrayList<>();
     public static List<Student> students = new ArrayList<>();
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
 
         String filePath = "/universityInfo.xlsx";
         String studentsSheetName = "Студенты";
@@ -23,26 +24,41 @@ public class Main {
         universities = ExcelReader.readUniversities(filePath, universitiesSheetName);
         students = ExcelReader.readStudents(filePath, studentsSheetName);
 
-        // Получение компаратора для сортировки студентов по имени
-        StudentComparator studentNameComparator = UtilComparator.getStudentComparator(StudentField.NAME);
+        Scanner scanner = new Scanner(System.in);
 
-        // Получение компаратора для сортировки университетов по ID
-        UniversityComparator universityYearComparator = UtilComparator.getUniversityComparator(UniversityField.YEAR);
+        System.out.println("Сортировка университетов:");
+        System.out.println("[1] ID   [2] название   [3] сокращение   [4] год основания   [5] профиль");
+        System.out.println("Выберите пункт меню: ");
 
-        // Использование полученных компараторов для сортировки студентов и университетов
-        students.sort(studentNameComparator);
-        universities.sort(universityYearComparator);
-
-        System.out.println("Студенты:");
-        for (Student student : students) {
-            System.out.println(student);
+        int choice = scanner.nextInt();
+        if (choice > UniversityField.values().length || choice < 1) {
+            choice = 1;
+            System.out.println("Нет такого пункта. Сортировка проводится по ID.");
         }
+        UniversityComparator unCmp = UtilComparator.getUniversityComparator(UniversityField.values()[choice - 1]);
+
+        System.out.println("                  университет                                                      год основания         профиль");
+        universities.stream()
+                .sorted(unCmp)
+                .forEach(System.out::println);
 
         System.out.println();
 
-        System.out.println("Университеты:");
-        for (University university : universities) {
-            System.out.println(university);
+        System.out.println("Сортировка студентов:");
+        System.out.println("[1] ФИО   [2] университет   [3] курс   [4] оценки");
+        System.out.println("Выберите пункт меню: ");
+
+        choice = scanner.nextInt();
+        if (choice > StudentField.values().length || choice < 1) {
+            choice = 1;
+            System.out.println("Нет такого пункта. Сортировка проводится по фамилии.");
         }
+        StudentComparator stCmp = UtilComparator.getStudentComparator(StudentField.values()[choice - 1]);
+
+        System.out.println("  студент              университет   курс   средний бал");
+        students.stream()
+                .sorted(stCmp)
+                .forEach(System.out::println);
+
     }
 }

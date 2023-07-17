@@ -63,7 +63,7 @@ public class University {
     @Override
 
     public String toString() {
-        return String.format("%-12s%-60s - %-10s   %-15s Profile: %s",
+        return String.format("%-12s%-60s   %-10s   %-15s %s",
                 id, fullName, shortName, yearOfFoundation, mainProfile.getProfileName());
     }
 

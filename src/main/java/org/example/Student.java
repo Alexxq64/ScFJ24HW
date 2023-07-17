@@ -59,8 +59,8 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("%-25s %-10s course %d.       Average: %.2f", fullName,
-                (getUniversityShortName(universityId) + ','), currentCourseNumber, avgExamScore);
+        return String.format("%-25s %-10s   %d        %.2f", fullName,
+                getUniversityShortName(universityId), currentCourseNumber, avgExamScore);
     }
 
 
