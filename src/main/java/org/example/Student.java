@@ -1,21 +1,10 @@
 package org.example;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.Date;
-import java.util.List;
-
-
 public class Student {
     private String fullName;
     private String universityId;
     private int currentCourseNumber;
     private float avgExamScore;
-
-
-    private LocalDate convertToLocalDate(Date dateToConvert) {
-        return dateToConvert.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-    }
 
 
     public Student(String fullName, String universityId, int currentCourseNumber,

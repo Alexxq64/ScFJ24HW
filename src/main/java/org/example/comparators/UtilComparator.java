@@ -1,14 +1,8 @@
 package org.example.comparators;
 
 
-        import org.example.Student;
-        import org.example.University;
-        import org.example.comparators.StudentComparator;
-        import org.example.comparators.UniversityComparator;
-        import org.example.enums.StudentField;
-        import org.example.enums.UniversityField;
-
-        import java.util.Comparator;
+import org.example.enums.StudentField;
+import org.example.enums.UniversityField;
 
 
 public class UtilComparator {

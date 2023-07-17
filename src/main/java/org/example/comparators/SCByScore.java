@@ -2,8 +2,6 @@ package org.example.comparators;
 
 import org.example.Student;
 
-import java.util.Comparator;
-
 public class SCByScore implements StudentComparator{
     @Override
     // сравниваем в обратном порядке o2 o1

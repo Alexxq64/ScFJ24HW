@@ -6,7 +6,6 @@ import org.example.comparators.UtilComparator;
 import org.example.enums.StudentField;
 import org.example.enums.UniversityField;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
