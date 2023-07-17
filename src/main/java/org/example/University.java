@@ -1,45 +1,23 @@
 package org.example;
 
+import org.example.enums.StudyProfile;
+
 public class University {
     private String id;
     private String fullName;
     private String shortName;
     private int yearOfFoundation;
     private StudyProfile mainProfile;
-    private String country;
-    private String city;
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public University(String id, String fullName, String shortName,
-                      int yearOfFoundation, StudyProfile mainProfile, String country, String city) {
+                      int yearOfFoundation, StudyProfile mainProfile) {
         this.id = id;
         this.fullName = fullName;
         this.shortName = shortName;
         this.yearOfFoundation = yearOfFoundation;
         this.mainProfile = mainProfile;
-        this.country = country;
-        this.city = city;
     }
-
-    // Дополнительные геттеры и сеттеры
-
-    // ...
-
 
 
     public String getId() {
@@ -83,16 +61,10 @@ public class University {
     }
 
     @Override
-//    public String toString() {
-//        return  id + ".   " + fullName + " " +
-//                " (" + shortName + ") " +
-//                " " + yearOfFoundation + ". " +
-//                country + ", " + city +
-//                ".   Profile: " + mainProfile.getProfileName();
-//    }
 
     public String toString() {
-        return String.format("%-5s%-40s - %-10s  %-4d. %15s, %-15s Profile: %s", id, fullName, shortName, yearOfFoundation, country, city, mainProfile.getProfileName());
+        return String.format("%-12s%-60s - %-10s   %-15s Profile: %s",
+                id, fullName, shortName, yearOfFoundation, mainProfile.getProfileName());
     }
 
 }

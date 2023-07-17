@@ -1,4 +1,4 @@
-package org.example;
+package org.example.enums;
 
 public enum StudyProfile {
     SCIENCES("Естественные науки"),
@@ -7,7 +7,8 @@ public enum StudyProfile {
     CODING("Програмирование"),
     PHYSICS("Физика"),
     FOREIGN_LANGUAGES("Иняз"),
-    HIGHER_MATH("Вышка"),
+    LINGUISTICS("Лингвистика"),
+    MATHEMATICS("Вышка"),
     MEDICINE("Медицина");
 
     public String getProfileName() {

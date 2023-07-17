@@ -5,50 +5,25 @@ import java.time.Period;
 import java.util.Date;
 import java.util.List;
 
+
 public class Student {
     private String fullName;
     private String universityId;
     private int currentCourseNumber;
     private float avgExamScore;
-    private Date birthDate;
-    private int admissionYear;
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public int getAdmissionYear() {
-        return admissionYear;
-    }
-
-    public void setAdmissionYear(int admissionYear) {
-        this.admissionYear = admissionYear;
-    }
-
-
-    public int getAge() {
-        LocalDate currentDate = LocalDate.now();
-        LocalDate birthLocalDate = convertToLocalDate(birthDate);
-
-        return Period.between(birthLocalDate, currentDate).getYears();
-    }
 
     private LocalDate convertToLocalDate(Date dateToConvert) {
         return dateToConvert.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
     }
 
 
-    public Student(String fullName, String universityId, int currentCourseNumber, float avgExamScore, Date birthDate, int admissionYear) {
+    public Student(String fullName, String universityId, int currentCourseNumber,
+                   float avgExamScore) {
         this.fullName = fullName;
         this.universityId = universityId;
         this.currentCourseNumber = currentCourseNumber;
         this.avgExamScore = avgExamScore;
-        this.birthDate = birthDate;
-        this.admissionYear = admissionYear;
     }
     public String getFullName() {
         return fullName;
@@ -84,17 +59,19 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("%-35s %-10s course %d. Average: %.2f", (fullName + ", " + getAge()),
+        return String.format("%-25s %-10s course %d.       Average: %.2f", fullName,
                 (getUniversityShortName(universityId) + ','), currentCourseNumber, avgExamScore);
     }
 
-    public String getUniversityShortName(String universityId) {
+
+
+    private String getUniversityShortName(String universityId) {
         for (University university : Main.universities) {
             if (university.getId().equals(universityId)) {
                 return university.getShortName();
             }
         }
-
-        return null; // Или любое значение по умолчанию, если universityId не найден
+        return null; // Or any default value if universityId is not found
     }
+
 }
