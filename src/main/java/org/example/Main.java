@@ -1,13 +1,14 @@
 package org.example;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import org.example.comparators.StudentComparator;
+import org.example.comparators.UniversityComparator;
+import org.example.comparators.UtilComparator;
+import org.example.enums.StudentField;
+import org.example.enums.UniversityField;
 
-//import static org.example.ExcelReader.readStudents;
-//import static org.example.ExcelReader.readUniversities;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static List<University> universities = new ArrayList<>();
@@ -15,13 +16,22 @@ public class Main {
 
     public static void main(String[] args) throws ParseException {
 
-
         String filePath = "/universityInfo.xlsx";
         String studentsSheetName = "Студенты";
         String universitiesSheetName = "Университеты";
 
         universities = ExcelReader.readUniversities(filePath, universitiesSheetName);
         students = ExcelReader.readStudents(filePath, studentsSheetName);
+
+        // Получение компаратора для сортировки студентов по имени
+        StudentComparator studentNameComparator = UtilComparator.getStudentComparator(StudentField.NAME);
+
+        // Получение компаратора для сортировки университетов по ID
+        UniversityComparator universityYearComparator = UtilComparator.getUniversityComparator(UniversityField.YEAR);
+
+        // Использование полученных компараторов для сортировки студентов и университетов
+        students.sort(studentNameComparator);
+        universities.sort(universityYearComparator);
 
         System.out.println("Студенты:");
         for (Student student : students) {
@@ -35,10 +45,4 @@ public class Main {
             System.out.println(university);
         }
     }
-
-//    public static Date parseDate(String dateString) throws ParseException {
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-//        return dateFormat.parse(dateString);
-//    }
-
 }
