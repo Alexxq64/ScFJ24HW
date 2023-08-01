@@ -1,11 +1,19 @@
 package org.example;
 
-public class Student {
-    private String fullName;
-    private String universityId;
-    private int currentCourseNumber;
-    private float avgExamScore;
+import com.google.gson.annotations.SerializedName;
 
+public class Student {
+    @SerializedName("sFullName")
+    private String fullName;
+
+    @SerializedName("sUniversityId")
+    private String universityId;
+
+    @SerializedName("sCurrentCourseNumber")
+    private int currentCourseNumber;
+
+    @SerializedName("sAvgExamScore")
+    private float avgExamScore;
 
     public Student(String fullName, String universityId, int currentCourseNumber,
                    float avgExamScore) {
@@ -60,7 +68,7 @@ public class Student {
                 return university.getShortName();
             }
         }
-        return null; // Or any default value if universityId is not found
+        return null; // Or any default value if universityId was not found
     }
 
 }
