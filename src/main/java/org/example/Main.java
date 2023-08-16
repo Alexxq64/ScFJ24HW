@@ -33,8 +33,8 @@ public class Main {
         String studentsSheetName = "Студенты";
         String universitiesSheetName = "Университеты";
 
-        universities = ExcelReader.readUniversities(filePath, universitiesSheetName);
-        students = ExcelReader.readStudents(filePath, studentsSheetName);
+        universities = XlsReader.readUniversities(filePath, universitiesSheetName);
+        students = XlsReader.readStudents(filePath, studentsSheetName);
 
         List<Statistics> statisticsList = StatisticsUtil.createStatistics(students, universities);
         XlsWriter.generateAndWriteTable(statisticsList, "statistics.xlsx");
@@ -129,10 +129,9 @@ public class Main {
                 .setStatisticsList(statisticsList)
                 .setExecDate(new Date());
 
-// ???????????????????????????????????????????????
         XmlWriter.writeToXml(dataSet);
 
-        DataSetJsonWriter.writeDataSetToJsonFile(dataSet);
+        JsonWriter.writeToJson(dataSet);
 
 
         logger.info("Application finished");

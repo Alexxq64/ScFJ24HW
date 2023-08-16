@@ -7,11 +7,11 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DataSetJsonWriter {
+public class JsonWriter {
 
-    private static final Logger logger = Logger.getLogger(DataSetJsonWriter.class.getName());
+    private static final Logger logger = Logger.getLogger(JsonWriter.class.getName());
 
-    public static void writeDataSetToJsonFile(DataSet dataSet) {
+    public static void writeToJson(DataSet dataSet) {
         String directoryPath = "jsonReqs";
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(dataSet.getExecDate());
         String fileName = "req_" + timestamp + ".json";

@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Statistics {
-    @XmlElement(name = "university profile")
+    @XmlElement(name = "universityProfile")
     private StudyProfile studyProfile;
-    @XmlElement(name = "average score")
+    @XmlElement(name = "averageScore")
     private float averageScore;
     @XmlTransient
     private int numberOfStudentsByProfile;

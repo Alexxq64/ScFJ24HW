@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class ExcelReader {
-    private static final Logger logger = Logger.getLogger(ExcelReader.class.getName());
-    private ExcelReader() {
+public class XlsReader {
+    private static final Logger logger = Logger.getLogger(XlsReader.class.getName());
+    private XlsReader() {
     }
 
     public static List<Student> readStudents(String filePath, String sheetName) {
         List<Student> students = new ArrayList<>();
 
-        try (InputStream inputStream = ExcelReader.class.getResourceAsStream(filePath)) {
+        try (InputStream inputStream = XlsReader.class.getResourceAsStream(filePath)) {
             assert inputStream != null;
             try (Workbook workbook = new XSSFWorkbook(inputStream)) {
 
@@ -48,7 +48,7 @@ public class ExcelReader {
     public static List<University> readUniversities(String filePath, String sheetName) {
         List<University> universities = new ArrayList<>();
 
-        try (InputStream inputStream = ExcelReader.class.getResourceAsStream(filePath)) {
+        try (InputStream inputStream = XlsReader.class.getResourceAsStream(filePath)) {
             assert inputStream != null;
             try (Workbook workbook = new XSSFWorkbook(inputStream)) {
 
