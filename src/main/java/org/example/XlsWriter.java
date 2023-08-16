@@ -9,9 +9,12 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Logger;
 
 
 public class XlsWriter {
+
+    private static final Logger logger = Logger.getLogger(XlsWriter.class.getName());
 
     private XlsWriter() {
     }
@@ -61,9 +64,9 @@ public class XlsWriter {
                 workbook.write(fileOut);
             }
 
-            System.out.println("Table generated and written to the file: " + filePath);
+            logger.info("Table generated and written to the file: " + filePath);
         } catch (IOException e) {
-            System.err.println("Error occurred while generating and writing the table: " + e.getMessage());
+            logger.severe("Error occurred while generating and writing the table: " + e.getMessage());
         }
     }
 

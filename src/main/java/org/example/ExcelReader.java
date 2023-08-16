@@ -8,8 +8,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ExcelReader {
+    private static final Logger logger = Logger.getLogger(ExcelReader.class.getName());
     private ExcelReader() {
     }
 
@@ -34,8 +36,10 @@ public class ExcelReader {
                 }
 
             }
+            logger.info("Successfully read student data from " + filePath);
+
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("Error occurred while reading student data: " + e.getMessage());
         }
 
         return students;
@@ -63,8 +67,10 @@ public class ExcelReader {
                 }
 
             }
+            logger.info("Successfully read university data from " + filePath);
+
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("Error occurred while reading university data: " + e.getMessage());
         }
 
         return universities;
